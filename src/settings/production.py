@@ -64,7 +64,7 @@ REST_FRAMEWORK = {
 
 REST_AUTH_SERIALIZERS = {
     #'TOKEN_SERIALIZER':'modules.acc_api.serializer.TokenSerializer',
-    'USER_DETAILS_SERIALIZER':'modules.auth.serializer.RestAuthSerializer',
+    'USER_DETAILS_SERIALIZER':'account.serializer.RestAuthSerializer',
 }
 
 
