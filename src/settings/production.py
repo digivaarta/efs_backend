@@ -1,5 +1,5 @@
 from .common import *
-
+import os
 DEBUG = False
 
 MEDIA_URL = "/media/"
