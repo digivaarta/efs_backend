@@ -8,7 +8,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,"sfiles/")
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static/"),)
 TIME_ZONE = "Asia/Kolkata"
 
-ALLOWED_HOSTS = ["efs.srcouncil.in",]
+ALLOWED_HOSTS = ["efs.digivaarta.in","efs.srcouncil.in",]
 
 INTERNAL_IPS = ALLOWED_HOSTS
 USE_L10N = True
