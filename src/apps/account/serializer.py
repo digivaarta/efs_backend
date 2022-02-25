@@ -18,8 +18,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         u,c = User.objects.update_or_create(
             username=validated_data["username"],        
         )
+        print(c)
         if c:
             u.set_password(validated_data["password"])
+            u.save()
         return u
 
 
