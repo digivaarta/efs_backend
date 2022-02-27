@@ -10,7 +10,7 @@ from banners import urls as bannerUrls
 from gallery import urls as galleryUrls
 from news import urls as newsUrls
 from task import urls as taskUrls
-
+from utility import urls as utilityUrls
 schema_view = get_schema_view(
    openapi.Info(
       title="ESFS API",
@@ -39,6 +39,7 @@ urlpatterns = [
    path("news/", include(newsUrls)),
    path("task/", include(taskUrls)),
    path('auth/', include('dj_rest_auth.urls')),
+   path('utility/', include('utility.urls')),
    path('dj-rest-auth/', include('dj_rest_auth.urls')),
 ]
 

@@ -62,7 +62,7 @@ SITE_ID = 1
 #SITE_ID = 1
 
 
-LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task",]
+LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task","utility",]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
