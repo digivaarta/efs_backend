@@ -32,5 +32,5 @@ class UserTask(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
-    def __str__(self) -> str:
-        return "{0}".format(self.task)
+    def __str__(self):
+        return "{0}".format(self.user)

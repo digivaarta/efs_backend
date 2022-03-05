@@ -13,5 +13,5 @@ class TaskAdmin(admin.ModelAdmin):
 
 
 @admin.register(UserTask)
-class UserTask(admin.ModelAdmin):
-    list_display = ("user","curriculum","content","creation_date","is_active",)
+class UserTask(admin.ModelAdmin):pass
+    #list_display = ("user","curriculum","content","creation_date","is_active",)
