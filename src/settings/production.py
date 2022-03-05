@@ -18,7 +18,7 @@ USE_L10N = True
 DATABASES = {
     'default': {
         "ENGINE": 'django.db.backends.postgresql',
-        "NAME": "beast",
+        "NAME": "efs",
         "USERNAME": "anton",
         "PASSWORD": "bucho",
         "ATOMIC_REQUEST":True,
