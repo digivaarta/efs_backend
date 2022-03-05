@@ -1,2 +1,2 @@
-use_settings = "dev"
-SUB_DOMAIN_SETTING = False
+use_settings = "prod"
+SUB_DOMAIN_SETTING = True
