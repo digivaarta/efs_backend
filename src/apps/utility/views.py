@@ -24,6 +24,7 @@ class MetaContentListAPI(AbstractListAPI):
     filter_backends = (filters.DjangoFilterBackend,)
     queryset = MetaContentListSerializer.get_query()
     filterset_fields = ('meta_category',)
+    pagination_class = None
 
 
 
