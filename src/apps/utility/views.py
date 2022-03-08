@@ -20,9 +20,9 @@ class MetaContentDetailAPI(AbstractRetrieveAPI):
 
 class MetaContentListAPI(AbstractRetrieveAPI):
 
-    serializer_class = MetaContentSerializer
+    serializer_class = MetaContentListSerializer
     filter_backends = (filters.DjangoFilterBackend,)
-    queryset = MetaContentSerializer.get_query()
+    queryset = MetaContentListSerializer.get_query()
     filterset_fields = ('meta_category',)
 
 
