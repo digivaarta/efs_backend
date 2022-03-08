@@ -6,7 +6,7 @@ from utility.models import MetaContent,MetaContentCategory
 class MetaContentCategoryAdmin(admin.ModelAdmin):
     exclude = ("user",)
     readonly_fields = ("slug",)
-    list_display = ("title","slug",)
+    list_display = ("id","title","slug",)
 
     def save_model(self, request, obj, form, change):
         obj.user = request.user
