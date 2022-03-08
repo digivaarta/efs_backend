@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from utils.mixins import AbstractRetrieveAPI
+from utils.mixins import AbstractRetrieveAPI,AbstractListAPI
 from django_filters import rest_framework as filters
 
 from utility.serializers import MetaContentSerializer,MetaContentListSerializer
@@ -18,7 +18,7 @@ class MetaContentDetailAPI(AbstractRetrieveAPI):
             return None
 
 
-class MetaContentListAPI(AbstractRetrieveAPI):
+class MetaContentListAPI(AbstractListAPI):
 
     serializer_class = MetaContentListSerializer
     filter_backends = (filters.DjangoFilterBackend,)
