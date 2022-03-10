@@ -62,7 +62,8 @@ SITE_ID = 1
 #SITE_ID = 1
 
 
-LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task","utility",]
+LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task","utility","pledge",]
+MASTER_TEMPLATE_DIRS = Path("template/")
 
 INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
@@ -80,7 +81,7 @@ ROOT_URLCONF = 'src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [MASTER_TEMPLATE_DIRS],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

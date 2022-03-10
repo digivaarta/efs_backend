@@ -11,6 +11,7 @@ from gallery import urls as galleryUrls
 from news import urls as newsUrls
 from task import urls as taskUrls
 from utility import urls as utilityUrls
+from pledge import urls as pledgeUrls
 schema_view = get_schema_view(
    openapi.Info(
       title="ESFS API",
@@ -38,6 +39,7 @@ urlpatterns = [
    path("gallery/",include(galleryUrls)),
    path("news/", include(newsUrls)),
    path("task/", include(taskUrls)),
+   path("pledge/", include(pledgeUrls)),
    path('auth/', include('dj_rest_auth.urls')),
    path('utility/', include('utility.urls')),
    path('dj-rest-auth/', include('dj_rest_auth.urls')),

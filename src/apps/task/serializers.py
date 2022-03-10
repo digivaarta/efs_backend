@@ -7,7 +7,7 @@ class TaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Curriculum
-        exclude = ("user",)
+        exclude = ("user","creation_date",)
 
     @classmethod
     def get_query(cls):
@@ -31,7 +31,8 @@ class UserTaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserTask
-        exclude = ("user",)
+        exclude = ("user","curriculum",)
+        
 
     @classmethod
     def get_query(cls,user):

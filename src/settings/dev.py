@@ -175,3 +175,15 @@ CKEDITOR_CONFIGS = {
     ]),
     }
 }
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "mail@srcouncil.in"
+EMAIL_HOST_PASSWORD = "mail@#2022"
+# EMAIL_HOST_USER = "pro@srcouncil.in"
+# EMAIL_HOST_PASSWORD = "Delhi@#2021"
+
+DEFAULT_AUTO_EMAIL = "pro@srcouncil.in"
