@@ -13,8 +13,10 @@ User = get_user_model()
 class Profiles(models.Model):
     user = models.OneToOneField("account.User",related_name="user_profiles",on_delete=models.CASCADE)
     full_name = models.CharField(max_length=150,blank=True,null=True)
-    first_name = models.CharField(max_length=100,blank=True,null=True)
-    last_name = models.CharField(max_length=100,blank=True,null=True)
+    dob = models.DateField(blank=True,null=True)
+    state = models.CharField(max_length=100,blank=True,null=True)
+    district = models.CharField(max_length=100,blank=True,null=True)
+    pincode = models.CharField(max_length=100,blank=True,null=True)
     gender = models.CharField(max_length=100,blank=True,null=True)
     last_update = models.DateTimeField(auto_now=TRUE)
 

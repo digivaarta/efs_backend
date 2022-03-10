@@ -186,4 +186,4 @@ EMAIL_HOST_PASSWORD = "mail@#2022"
 # EMAIL_HOST_USER = "pro@srcouncil.in"
 # EMAIL_HOST_PASSWORD = "Delhi@#2021"
 
-DEFAULT_AUTO_EMAIL = "pro@srcouncil.in"
+DEFAULT_AUTO_EMAIL = "mail@srcouncil.in"
