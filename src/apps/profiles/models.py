@@ -11,13 +11,14 @@ from django.db.models.signals import post_save
 User = get_user_model()
 
 class Profiles(models.Model):
-    user = models.OneToOneField("account.User",related_name="user_profiles",on_delete=models.CASCADE)
+    user = models.OneToOneField("account.User",related_name="user_profiles",on_delete=models.CASCADE,primary_key=True)
     full_name = models.CharField(max_length=150,blank=True,null=True)
     dob = models.DateField(blank=True,null=True)
     state = models.CharField(max_length=100,blank=True,null=True)
     district = models.CharField(max_length=100,blank=True,null=True)
     pincode = models.CharField(max_length=100,blank=True,null=True)
     gender = models.CharField(max_length=100,blank=True,null=True)
+    mobile = models.CharField(max_length=10,blank=True,null=True)
     last_update = models.DateTimeField(auto_now=TRUE)
 
 User.profile = property(lambda u:Profiles.objects.get(user=u))
