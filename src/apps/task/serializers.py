@@ -27,11 +27,21 @@ class UserTaskCreateSerializer(serializers.ModelSerializer):
         return v
 
 
+class TaskDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Curriculum
+        fields = ("id","title",)
+
+
 class UserTaskListSerializer(serializers.ModelSerializer):
+
+    curriculum = TaskDetailSerializer()
 
     class Meta:
         model = UserTask
-        exclude = ("user","curriculum",)
+        exclude = ("user","is_active",)
+        depth = 1
         
 
     @classmethod
