@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.utils import timezone
 # Create your models here.
 
 
@@ -43,3 +44,19 @@ class UserTask(models.Model):
 
     def __str__(self):
         return "{0}".format(self.user)
+
+    # @classmethod
+    # def get_query(self,curriculum,user):
+    #     now = timezone.now()
+    #     if(TaskChoice.DAILY == curriculum.task_type):
+    #         return self.objects.get(user=user,curriculum=curriculum,creation_date__date=now.date())
+    #     elif(TaskChoice.MONTHLY == curriculum.task_type):
+    #         return self.objects.get(user=user,curriculum=curriculum,creation_date__year=now.year,creation_date__month=now.month)
+    #     elif(TaskChoice.ONE_TIME == curriculum.task_type):
+    #         return self.objects.get(user=user,curriculum=curriculum)
+    #     return None    
+
+
+
+
+

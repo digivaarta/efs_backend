@@ -5,6 +5,7 @@ from task.models import Curriculum,UserTask
 @admin.register(Curriculum)
 class TaskAdmin(admin.ModelAdmin):
     exclude = ("user",)
+    list_display = ("id","title","task_type",)
 
     def save_model(self,request,obj,form,change):
         obj.user = request.user

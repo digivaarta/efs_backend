@@ -1,8 +1,7 @@
-from pyexpat import model
 from rest_framework import serializers
-
-from task.models import Curriculum,UserTask
-
+from django.utils import timezone
+from task.models import Curriculum,UserTask,TaskChoice
+import datetime
 class TaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -49,4 +48,31 @@ class UserTaskListSerializer(serializers.ModelSerializer):
         return UserTask.objects.filter(user=user)      
 
         
+
+class UserTaskStatusSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserTask
+        fields = ("id",)
+
+    @classmethod
+    def get_object(cls,pk,user):
+        curriculum = Curriculum.objects.get(pk=pk)
+        try:
+            return cls.get_query(cls,curriculum,user)
+        except Exception as e:
+            print(e)
+            return None 
+
+    def get_query(self,curriculum,user):
+        now = timezone.now()
+        print("Now")
+        print(now)
+        if(TaskChoice.DAILY == curriculum.task_type):
+            return UserTask.objects.filter(user=user,curriculum=curriculum,creation_date__date=now.date()).first()
+        elif(TaskChoice.MONTHLY == curriculum.task_type):
+            return UserTask.objects.filter(user=user,curriculum=curriculum,creation_date__year=now.year,creation_date__month=now.month).first()
+        elif(TaskChoice.ONE_TIME == curriculum.task_type):
+            return UserTask.objects.filter(user=user,curriculum=curriculum).first()
+        return None               
 
