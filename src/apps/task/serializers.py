@@ -70,6 +70,10 @@ class UserTaskStatusSerializer(serializers.ModelSerializer):
         print(now)
         if(TaskChoice.DAILY == curriculum.task_type):
             return UserTask.objects.filter(user=user,curriculum=curriculum,creation_date__date=now.date()).first()
+            # if v:
+            #     raise serializers.ValidationError({'message':'Data Available'}, code=200)
+            # else:  
+            #     raise serializers.ValidationError({'message':'Data Available'}, code=200)  
         elif(TaskChoice.MONTHLY == curriculum.task_type):
             return UserTask.objects.filter(user=user,curriculum=curriculum,creation_date__year=now.year,creation_date__month=now.month).first()
         elif(TaskChoice.ONE_TIME == curriculum.task_type):

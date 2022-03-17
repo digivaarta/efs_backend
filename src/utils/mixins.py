@@ -102,6 +102,7 @@ class AbstractRetrieveAPI(RetrieveAPIView):
         queryset = self.get_queryset(pk)
         if queryset is not None:
             serializer = self.serializer_class(queryset,context=context)
+            
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({"submit": False}, status=status.HTTP_400_BAD_REQUEST)
 
