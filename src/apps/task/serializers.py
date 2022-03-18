@@ -19,7 +19,7 @@ class UserTaskCreateSerializer(serializers.ModelSerializer):
         fields = ("attachment","content","curriculum",)
 
     def create(self,validated_data):
-        user = self.content["request"].user
+        user = self.context["request"].user
         v = UserTask.objects.create(
             user=user,**validated_data
         )
