@@ -13,6 +13,7 @@ from task import urls as taskUrls
 from utility import urls as utilityUrls
 from pledge import urls as pledgeUrls
 from profiles import urls as proUrls
+from support import urls as supportUrls
 schema_view = get_schema_view(
    openapi.Info(
       title="ESFS API",
@@ -42,6 +43,7 @@ urlpatterns = [
    path("task/", include(taskUrls)),
    path("pledge/", include(pledgeUrls)),
    path("profile/", include(proUrls)),
+   path("support/",include(supportUrls)),
    path('auth/', include('dj_rest_auth.urls')),
    path('utility/', include('utility.urls')),
    path('dj-rest-auth/', include('dj_rest_auth.urls')),
