@@ -8,7 +8,7 @@ class TicketSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Ticket
-        fields = ("subject",)
+        fields = ("subject","id",)
 
     def create(self,validated_data):
         user = self.context["request"].user
