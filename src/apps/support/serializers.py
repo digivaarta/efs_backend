@@ -59,6 +59,8 @@ class TicketListSerializer(serializers.ModelSerializer):
 
 class SupportListSerializer(serializers.ModelSerializer):
 
+    is_staff = serializers.SerializerMethodField()
+
     class Meta:
         model = Support
         exclude = ("sender",)
@@ -71,6 +73,9 @@ class SupportListSerializer(serializers.ModelSerializer):
     @classmethod
     def get_none(cls):
         return Support.objects.none()    
+
+    def get_is_staff(self,obj):
+        return obj.sender.is_staff    
             
 
 
