@@ -1,3 +1,4 @@
+from typing import Text
 from django.db import models
 from django.utils.text import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -39,3 +40,15 @@ class MetaContent(models.Model):
         self.slug = slugify(self.title)
         return super(MetaContent, self).save(*args, **kwargs)
 
+
+
+class Suggestion(models.Model):
+    user = models.ForeignKey("account.User",related_name="user_suggestion",on_delete=models.CASCADE)
+    title = models.CharField(max_length=400,unique=True)
+    content = models.TextField()
+    extra = models.JSONField(blank=True,null=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self) -> str:
+        return self.title

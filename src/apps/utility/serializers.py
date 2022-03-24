@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from utility.models import MetaContent
+from utility.models import MetaContent,Suggestion
 
 class MetaContentSerializer(serializers.ModelSerializer):
 
@@ -22,3 +22,17 @@ class MetaContentListSerializer(serializers.ModelSerializer):
     @classmethod
     def get_query(cls):
         return MetaContent.objects.filter(is_active=True)        
+
+
+class SuggestionSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Suggestion
+        fields = ("title","content",)
+
+    def create(self,validated_data):
+        user = self.context["request"].user
+        v = Suggestion.objects.create(
+            user=user,**validated_data
+        )    
+        return v

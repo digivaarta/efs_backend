@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from utils.mixins import AbstractRetrieveAPI,AbstractListAPI
+from utils.mixins import AbstractRetrieveAPI,AbstractListAPI,AbstractCreateAPI
 from django_filters import rest_framework as filters
 
-from utility.serializers import MetaContentSerializer,MetaContentListSerializer
+from utility.serializers import MetaContentSerializer,MetaContentListSerializer,SuggestionSerializer
 # Create your views here.
 
 
@@ -27,5 +27,7 @@ class MetaContentListAPI(AbstractListAPI):
     pagination_class = None
 
 
+class SuggestionCreateAPI(AbstractCreateAPI):
 
+    serializer_class = SuggestionSerializer
     
