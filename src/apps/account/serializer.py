@@ -1,6 +1,5 @@
 from dataclasses import fields
 from rest_framework import serializers
-from pledge.models import UserPledge
 from account.models import User
 from fcm_django.models import FCMDevice
 from django.contrib.auth import authenticate
@@ -56,18 +55,5 @@ class RestAuthSerializer(serializers.ModelSerializer):
         return obj.token.key        
 
 
-class PledgeCountSerializer(serializers.Serializer):
-
-    count = serializers.SerializerMethodField()
-
-    class Meta:
-        fields = "__all__"
-
-    @classmethod
-    def get_empty_none(self):
-        return UserPledge.objects.none()
-
-    def get_count(self,obj):
-        return UserPledge.objects.all().count()
 
    
