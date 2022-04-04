@@ -6,7 +6,7 @@ from gallery.serializers import GallerySerializer
 
 
 class GalleryListAPI(AbstractListAPI):
-    pagination_class = None
+    
     serializer_class = GallerySerializer
     queryset = GallerySerializer.get_query()
 

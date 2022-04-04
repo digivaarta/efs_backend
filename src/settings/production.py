@@ -52,7 +52,7 @@ REST_FRAMEWORK = {
          #'django_filters.rest_framework.DjangoFilterBackend',
     ),
     "DEFAULT_PAGINATION_CLASS":"utils.pagination.CustomPagination",
-    "PAGE_SIZE":10,
+    "PAGE_SIZE":30,
     "DATE_INPUT_FORMATS": ["%d-%m-%Y"],
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
