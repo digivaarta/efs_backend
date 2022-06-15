@@ -6,7 +6,7 @@ class TaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Curriculum
-        exclude = ("user",)
+        fields = ("title","content","creation_date","attachment_type",)
 
     @classmethod
     def get_query(cls):

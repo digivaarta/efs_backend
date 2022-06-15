@@ -7,7 +7,7 @@ class NewsSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = News
-        exclude = ("user",)
+        fields = ("title","description","content","image",)
 
     @classmethod
     def get_query(cls):

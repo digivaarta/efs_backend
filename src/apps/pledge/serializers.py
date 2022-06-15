@@ -7,7 +7,7 @@ class PledgeDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PledgeData
-        fields = "__all__"
+        fields = ("title","slug","content","slug","cover_image",)
 
 
 class PledgeListSerializer(serializers.ModelSerializer):
@@ -29,7 +29,7 @@ class PledgeDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Pledge
-        fields = "__all__"
+        fields = ("title","slug","cover_image","pledge_data",)
 
     @classmethod
     def get_query(cls,pk):

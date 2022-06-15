@@ -25,7 +25,8 @@ class Pledge(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        return super(Pledge, self).save(*args, **kwargs)        
+        return super(Pledge, self).save(*args, **kwargs) 
+               
 class PledgeData(models.Model):
     pledge = models.ForeignKey("pledge.Pledge",related_name="pledge_data",on_delete=models.CASCADE)
     title = models.CharField(max_length=500)

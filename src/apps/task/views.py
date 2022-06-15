@@ -2,6 +2,7 @@ from django.shortcuts import render
 from utils.mixins import AbstractListAPI,AbstractCreateAPI,AbstractRetrieveAPI
 from task.serializers import TaskListSerializer,UserTaskCreateSerializer,UserTaskListSerializer,UserTaskStatusSerializer
 # Create your views here.
+from django.utils import translation
 
 
 class TaskListAPI(AbstractListAPI):
@@ -9,6 +10,13 @@ class TaskListAPI(AbstractListAPI):
     serializer_class = TaskListSerializer
     pagination_class = None
     queryset = TaskListSerializer.get_query()
+
+    def get_queryset(self):
+        if 'HTTP_ACCEPT_LANGUAGE' in self.request.META:
+            lang = self.request.META['HTTP_ACCEPT_LANGUAGE']
+            translation.activate(lang)
+        return TaskListSerializer.get_query()
+    
 
 class UserTaskCreateAPI(AbstractCreateAPI):
 

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from utils.mixins import AbstractListAPI,AbstractRetrieveAPI,AbstractCreateAPI,AbstractUserRetrieveAPI
 from pledge.serializers import PledgeListSerializer,PledgeDetailSerializer,UserPledgeCreateSerializer
+from django.utils import translation
+
 # Create your views here.
 
 
@@ -15,6 +17,9 @@ class PledgeDetailAPI(AbstractRetrieveAPI):
     serializer_class = PledgeDetailSerializer
 
     def get_queryset(self,pk):
+        if 'HTTP_ACCEPT_LANGUAGE' in self.request.META:
+            lang = self.request.META['HTTP_ACCEPT_LANGUAGE']
+            translation.activate(lang)
         return PledgeDetailSerializer.get_query(pk)
     
 class UserPledgeCreateAPI(AbstractCreateAPI):

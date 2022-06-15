@@ -14,6 +14,7 @@ from utility import urls as utilityUrls
 from pledge import urls as pledgeUrls
 from profiles import urls as proUrls
 from support import urls as supportUrls
+from scholarship import urls as scholarUrls
 schema_view = get_schema_view(
    openapi.Info(
       title="ESFS API",
@@ -46,7 +47,9 @@ urlpatterns = [
    path("support/",include(supportUrls)),
    path('auth/', include('dj_rest_auth.urls')),
    path('utility/', include('utility.urls')),
+   path('scholarship/', include(scholarUrls)),
    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+   
 ]
 
 

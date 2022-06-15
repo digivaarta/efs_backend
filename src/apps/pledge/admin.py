@@ -1,13 +1,14 @@
 from django.contrib import admin
 from pledge.models import Pledge,PledgeData,UserPledge
 # Register your models here.
+from modeltranslation.admin import TranslationAdmin,TranslationTabularInline,TranslationStackedInline
 
 
-class PledgeDataInline(admin.TabularInline):
+class PledgeDataInline(TranslationStackedInline):
     model = PledgeData
 
 @admin.register(Pledge)
-class PledgeAdmin(admin.ModelAdmin):
+class PledgeAdmin(TranslationAdmin):
     exclude = ("user",)
     readonly_fields = ("slug",)
     list_display = ("title","slug","creation_date","is_active")

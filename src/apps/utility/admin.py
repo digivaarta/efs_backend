@@ -1,6 +1,7 @@
 from django.contrib import admin
 from utility.models import MetaContent,MetaContentCategory,Suggestion
 # Register your models here.
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(MetaContentCategory)
 class MetaContentCategoryAdmin(admin.ModelAdmin):
@@ -15,7 +16,7 @@ class MetaContentCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(MetaContent)
-class MetaContentAdmin(admin.ModelAdmin):
+class MetaContentAdmin(TranslationAdmin):
     exclude = ("user",)
     readonly_fields = ("slug",)
     list_display = ("title","slug","creation_date","last_update","is_active",)

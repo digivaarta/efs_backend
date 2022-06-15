@@ -6,7 +6,7 @@ class MetaContentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MetaContent
-        exclude = ("user",)
+        fields = ("title","content","extra",)
 
     @classmethod
     def get_query(cls,slug):
@@ -17,7 +17,7 @@ class MetaContentListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MetaContent
-        exclude = ("user",)
+        fields = ("title","content","extra",)
 
     @classmethod
     def get_query(cls):

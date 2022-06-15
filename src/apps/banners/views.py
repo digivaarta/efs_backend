@@ -4,13 +4,23 @@ from utils.mixins import AbstractListAPI
 from banners.serializers import BannerSerializer,PledgeCountSerializer
 from rest_framework import views
 from rest_framework.response import Response
+from django.utils import translation
+
 # Create your views here.
 
 
 class BannerListAPI(AbstractListAPI):
     pagination_class = None
     serializer_class = BannerSerializer
-    queryset = BannerSerializer.get_query()
+    
+
+    def get_queryset(self):
+        if 'HTTP_ACCEPT_LANGUAGE' in self.request.META:
+            lang = self.request.META['HTTP_ACCEPT_LANGUAGE']
+            translation.activate(lang)
+        return BannerSerializer.get_query() 
+
+
 
 
 

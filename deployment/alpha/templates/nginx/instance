@@ -1,4 +1,4 @@
-upstream rdnews_app_server {
+upstream beast_app_server {
   # fail_timeout=0 means we always retry an upstream even if it failed
   # to return a good HTTP response (in case the Unicorn master nukes a
   # single worker for timing out).
@@ -9,7 +9,7 @@ upstream rdnews_app_server {
 server {
 
     listen   80;
-    server_name alpha.techmixin.com;
+    server_name beast.techmixin.com;
 
     client_max_body_size 4G;
 
@@ -17,11 +17,11 @@ server {
     error_log /home/anton/release/logs/nginx-error.log;
 
     location /static/ {
-        alias   /home/anton/release/rd_news_backend/src/sfiles/;
+        alias   /home/anton/release/beast/src/sfiles/;
     }
 
     location /media/ {
-        alias   /home/anton/release/rd_news_backend/src/media/;
+        alias   /home/anton/release/beast/src/media/;
     }
 
     location / {
@@ -51,7 +51,7 @@ server {
         # Try to serve static files from nginx, no point in making an
         # *application* server like Unicorn/Rainbows! serve static files.
         if (!-f $request_filename) {
-            proxy_pass http://rdnews_app_server;
+            proxy_pass http://beast_app_server;
             break;
         }
     }
@@ -59,6 +59,6 @@ server {
     # Error pages
     error_page 500 502 503 504 /500.html;
     location = /500.html {
-        root /home/anton/release/rd_news_backend/src/templates/error/;
+        root /home/anton/release/beast/src/templates/error/;
     }
 }

@@ -1,9 +1,11 @@
 from django.contrib import admin
 from task.models import Curriculum,UserTask
+from modeltranslation.admin import TranslationAdmin
+
 # Register your models here.
 
 @admin.register(Curriculum)
-class TaskAdmin(admin.ModelAdmin):
+class TaskAdmin(TranslationAdmin):
     exclude = ("user",)
     list_display = ("id","title","task_type",)
 

@@ -56,4 +56,55 @@ class RestAuthSerializer(serializers.ModelSerializer):
 
 
 
-   
+class NewRegisterSerializer(serializers.ModelSerializer):
+    #username = serializers.CharField(required=True)
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ("username","password","id",)
+
+    def create(self,validated_data):
+        
+        u = User.objects.create(
+            username=validated_data["username"],        
+        )
+        
+        if u:
+            u.set_password(validated_data["password"])
+            u.save()
+        return u   
+
+class NewRegisterSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(required=True)
+
+    class Meta:
+        model = User
+        fields = ("username","password","id",)
+
+    def create(self,validated_data):
+        u = User.objects.get(
+            username=validated_data["username"],        
+        )
+        return u    
+
+class GoogleSignInSerializer(serializers.ModelSerializer):
+
+    token = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ("username","token",)
+
+
+    @classmethod
+    def get_query(cls,pk):
+        try:
+            return User.objects.get(username=pk)
+        except Exception as e:
+            print(e)
+            return None    
+
+
+    def get_token(self,obj):
+        return obj.token.key                      

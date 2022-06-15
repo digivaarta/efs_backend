@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NAME="src"                                  # Name of the application
-DJANGODIR=/home/anton/release/rd_news_backend/src             # Django project directory
+DJANGODIR=/home/anton/release/beast/src             # Django project directory
 SOCKFILE=/home/anton/release/run/gunicorn.sock  # we will communicte using this unix socket
 USER=anton                                        # the user to run as
 GROUP=anton                                     # the group to run as

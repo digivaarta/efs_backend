@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,8 +54,6 @@ THIRD_PARTY_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'dj_rest_auth',
-
-
 ]
 
 SITE_ID = 1
@@ -62,7 +61,7 @@ SITE_ID = 1
 #SITE_ID = 1
 
 
-LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task","utility","pledge",]
+LOCAL_APPS = ["account","profiles","banners","gallery","news","support","task","utility","pledge","scholarship",]
 MASTER_TEMPLATE_DIRS = Path("template/")
 
 INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS
@@ -74,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -132,6 +132,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+#LANGUAGE_CODE = 'hn-in'
+
+
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -148,3 +151,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('hi', gettext('Hindi')),
+    
+)

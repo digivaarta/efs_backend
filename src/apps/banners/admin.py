@@ -1,9 +1,11 @@
 from django.contrib import admin
 from banners.models import Banner
+from modeltranslation.admin import TranslationAdmin
+
 # Register your models here.
 
 @admin.register(Banner)
-class BannerAdmin(admin.ModelAdmin):
+class BannerAdmin(TranslationAdmin):
     exclude = ("user",)
 
 

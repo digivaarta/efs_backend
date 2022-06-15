@@ -8,7 +8,7 @@ class BannerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Banner
-        exclude = ("user",)
+        fields = ("title","description","image",)
 
     @classmethod
     def get_query(cls):

@@ -35,8 +35,6 @@ urlpatterns = [
 
 urlpatterns += ApiUrl
 
-
-
 admin.site.site_header = "EFS Admin"
 admin.site.site_title = "EFS Admin Portal"
 admin.site.index_title = "Welcome to EFS Portal"

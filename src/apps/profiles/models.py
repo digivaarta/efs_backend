@@ -5,6 +5,10 @@ from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
+from django_extensions.db.fields import RandomCharField
+
+from profiles.tasks import send_otp_email
+
 # Create your models here.
 
 
@@ -28,3 +32,15 @@ User.profile = property(lambda u:Profiles.objects.get(user=u))
 def create_profile_instance(sender,instance,created,**kwargs):
     if created:
         Profiles.objects.create(user=instance)
+
+
+class UserOtp(models.Model):
+    email = models.EmailField()
+    otp = RandomCharField(length=6,include_alpha=False)
+
+    def __str__(self) -> str:
+        return self.email
+
+@receiver(post_save,sender="profiles.UserOtp")
+def create_profile_instance(sender,instance,created,**kwargs):
+    send_otp_email(instance)
