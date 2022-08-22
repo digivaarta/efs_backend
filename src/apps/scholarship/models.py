@@ -24,6 +24,8 @@ class ScholarshipTask(models.Model):
     title = models.CharField(max_length=300)
     minimum_age = models.IntegerField(default=0)
     maximum_age = models.IntegerField(default=0)
+    start_date = models.DateField(blank=True,null=True)
+    end_date = models.DateField(blank=True,null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
 
