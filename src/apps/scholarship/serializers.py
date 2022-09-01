@@ -47,7 +47,7 @@ class UserScholarshipTaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserScholarshipTask
-        fields = ("content","attachment_one","attachment_two","status","sub_task",)
+        fields = ("content","attachment_one","attachment_two","status","sub_task","creation_date",)
 
     @classmethod
     def get_query(cls,user):
