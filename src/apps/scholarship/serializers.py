@@ -54,4 +54,19 @@ class UserScholarshipTaskListSerializer(serializers.ModelSerializer):
         return UserScholarshipTask.objects.filter(user=user) 
 
     def get_sub_task(self,obj):
-        return obj.sub_task.title     
+        return obj.sub_task.title
+
+class UserScholarshipTaskVerifySerializer(serializers.ModelSerializer):
+
+    sub_task = serializers.SerializerMethodField()
+
+    class Meta:
+        model = UserScholarshipTask
+        fields = ("sub_task",)
+
+    @classmethod
+    def get_query(cls,user):
+        return UserScholarshipTask.objects.filter(user=user) 
+
+    def get_sub_task(self,obj):
+        return obj.sub_task.title             
