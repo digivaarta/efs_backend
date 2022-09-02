@@ -3,6 +3,7 @@ from rest_framework import serializers
 from account.models import User
 from fcm_django.models import FCMDevice
 from django.contrib.auth import authenticate
+from profiles.models import Profiles
 
 class RegisterSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=True)
@@ -21,6 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         if c:
             u.set_password(validated_data["password"])
             u.save()
+            Profiles.objects.create(user=u)
         return u
 
 

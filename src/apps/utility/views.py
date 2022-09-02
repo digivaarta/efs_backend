@@ -7,6 +7,7 @@ from utility.serializers import MetaContentSerializer,MetaContentListSerializer,
 from django.utils import translation
 
 
+
 class MetaContentDetailAPI(AbstractRetrieveAPI):
 
     serializer_class = MetaContentSerializer
