@@ -68,7 +68,7 @@ class SupportListSerializer(serializers.ModelSerializer):
 
     @classmethod
     def get_query(cls):
-        return Support.objects.all()
+        return Support.objects.all().order_by("-id")
 
     @classmethod
     def get_none(cls):
