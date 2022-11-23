@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from utils.mixins import AbstractCreateAPI,AbstracLoginAPI,AbstractRetrieveAPI
+from utils.mixins import AbstractCreateAPI,AbstracLoginAPI,AbstractRetrieveAPI,AbstractUpdateAPI
 from rest_framework.permissions import AllowAny
 
-from account.serializer import RegisterSerializer,FcmDeviceSerializer,NewRegisterSerializer,GoogleSignInSerializer
+from account.serializer import RegisterSerializer,FcmDeviceSerializer,NewRegisterSerializer,GoogleSignInSerializer,AccountDeactivateSerializer
 
 # Create your views here.
 
@@ -29,3 +29,7 @@ class GoogleSignInAPI(AbstractRetrieveAPI):
 
     def get_queryset(self,pk):
         return GoogleSignInSerializer.get_query(pk)
+
+class UserDeactivateAPI(AbstractCreateAPI):
+
+    serializer_class = AccountDeactivateSerializer

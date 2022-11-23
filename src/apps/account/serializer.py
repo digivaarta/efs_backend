@@ -110,3 +110,21 @@ class GoogleSignInSerializer(serializers.ModelSerializer):
 
     def get_token(self,obj):
         return obj.token.key                      
+
+
+class AccountDeactivateSerializer(serializers.ModelSerializer):
+    #user = serializers.PrimaryKeyRelatedField(read_only=True,default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = User
+        fields = ("is_active",)
+
+    def create(self,validated_data):
+        user = self.context["request"].user
+        u = User.objects.get(
+            pk=user.pk,        
+        )
+        if user:
+            u.is_active = validated_data["is_active"]
+            u.save()
+        return u    
